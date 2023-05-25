@@ -40,11 +40,11 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
 1. `chmod 750 goaccess.sh`
 2. `goaccess` (Uses OpenBSD theme, GeoIP, and Exclusions)
-3. `goaccess.sh` to create an HTML report for the current log
-4. `goaccess.sh full` to combine all logs (including gzipped) into one report
+3. `goaccess.sh` to create an HTML report for the current log *(no options used)*
+4. `goaccess.sh full` to combine all logs (including gzipped) into one report *(no options used)*
 5. Check your `/var/log`
-   1. `goaccess-report-Month-Day.html`
-   2. `goaccess-total-report.html`
+    1. `goaccess-report-Month-Day.html`
+    2. `goaccess-total-report.html`
 
 
 
@@ -54,4 +54,8 @@ After you've made your first reports you can choose to get more out of your logs
 
 1.  Inside the `server` section of your `httpd.conf` add the directive `log style combined`
 2. `rcctl reload httpd`
+3. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script needed, some popular ones
+    `--exclude-ip='216.144.248.23'
+	`--enable-geoip=<legacy|mmdb>`
+	
 
