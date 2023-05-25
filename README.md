@@ -60,6 +60,8 @@ After you've made your first reports you can choose to get more out of your logs
     `--exclude-ip='216.144.248.23'
 	`--enable-geoip=<legacy|mmdb>`
 
+---
+
 
 
 **LICENSE**
