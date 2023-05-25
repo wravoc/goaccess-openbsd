@@ -1,4 +1,11 @@
-#cc!/bin/ksh
+#!/bin/ksh
+
+######################################
+# Elias Griffin
+# Quadhelion Engineering
+# https://www.quadhelion.engineering
+# elias@quadhelion.engineering
+######################################
 
 version=$(pkg_info goaccess | head -n 1)
 

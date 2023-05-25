@@ -59,3 +59,6 @@ After you've made your first reports you can choose to get more out of your logs
 	`--enable-geoip=<legacy|mmdb>`
 	
 
+
+
+[GoAccess OpenBSD Helpers ](https://bitbucket.org/quadhelion-engineering/goaccess-openbsd)© 2023 by [Elias Christopher Griffin ](https://www.eliasgriffin.com/)is licensed under [CC BY-NC-SA 4.0 ![img](https://chooser-beta.creativecommons.org/img/cc-logo.f0ab4ebe.svg)![img](https://chooser-beta.creativecommons.org/img/cc-by.21b728bb.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)
