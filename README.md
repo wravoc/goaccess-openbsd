@@ -10,9 +10,9 @@ It provides **fast** and valuable HTTP statistics for system administrators that
 
 
 
-## Helpers for GoAccess 1.7.1 on OpenBSD 7.3
+## Summary
 
-OpenBSD has some quirks dealing with log formats so to make it easier I have made a preconfigured *goaccess.conf* and some simple shell scripts to execute commands that work with the default package version.
+OpenBSD has some quirks dealing with log formats so to make it easier I have made a preconfigured *goaccess.conf* and some simple shell scripts to execute commands that work with the default package version of GoAccess provided by OpenBSD using self same conventions.
 
 
 
