@@ -8,7 +8,7 @@ It provides **fast** and valuable HTTP statistics for system administrators that
 
 
 
-## Configurations for OpenBSD 7.3, GoAccess 1.7.1
+## Helpers for GoAccess 1.7.1 on OpenBSD 7.3
 
 OpenBSD has some quirks dealing with log formats so to make it easier I have made a preconfigured *goaccess.conf* and some simple shell scripts to execute commands that work with the default package version.
 
@@ -16,7 +16,7 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
 ## Features
 
-* OpenBSD Theme
+* OpenBSD Themed
 
 * IP Exclusions for [Uptime Robot](https://uptimerobot.com/?rid=d8e3c5122ea836) Web Monitoring 
 
