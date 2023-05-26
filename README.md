@@ -55,10 +55,10 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 After you've made your first reports you can choose to get more out of your logs and GoAccess
 
 1.  Inside the `server` section of your `httpd.conf` add the directive `log style combined`
-2. `rcctl reload httpd`
-3. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script needed, some popular ones
-    `--exclude-ip='216.144.248.23'
-	`--enable-geoip=<legacy|mmdb>`
+2.  `rcctl reload httpd`
+3.  Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script needed, some popular ones
+    * `--exclude-ip='216.144.248.23'`
+    * `--enable-geoip=<legacy|mmdb>`
 
 ---
 
