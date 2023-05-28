@@ -22,7 +22,7 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
 * Automatic [ASN Database](https://www.arin.net/resources/guide/asn/) Download and Configuration Option
 
-  * Options for DB-IP, MaxMind Github 
+    * Options for DB-IP, MaxMind Github 
 
 * IP Exclusions for [Uptime Robot](https://uptimerobot.com/?rid=d8e3c5122ea836) Web Monitoring 
 
@@ -82,12 +82,12 @@ After you've made your first reports you can choose to get more out of your logs
 
 4. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
 
-   1.  `rcctl reload httpd`
+     1.  `rcctl reload httpd`
 
 5. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
-   * `--exclude-ip='216.144.248.23'`
-   * `--unknowns-log=<filename>`
-   * `--invalid-requests=<filename>`
+     * `--exclude-ip='216.144.248.23'`
+     * `--unknowns-log=<filename>`
+     * `--invalid-requests=<filename>`
 
 ---
 
