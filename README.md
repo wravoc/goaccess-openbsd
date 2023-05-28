@@ -60,9 +60,13 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
 After you've made your first reports you can choose to get more out of your logs and GoAccess
 
-1. Add your ASN provider in the `CUSTOMIZE` section, does not permit authenticated logins
+1. Add your ASN provider in the `CUSTOMIZE` section *(does not permit authenticated logins)*
 
-2. Using with [MaxMind Data](https://www.maxmind.com/en/accounts/871098/geoip/downloads) on a free account 
+2. Once you have download the ASN database via the script edit your `/etc/goaccess/goaccess.conf`
+
+   1.  Line 839 `geoip-database /var/db/GeoIP/ASN.mmdb`
+
+3. Using with [MaxMind Data](https://www.maxmind.com/en/accounts/871098/geoip/downloads) on a free account 
 
    1.  GeoIP **Country** Data: Copy database to `/var/db/GeoIP/GeoLite2-Country.mmdb`
 
@@ -76,11 +80,11 @@ After you've made your first reports you can choose to get more out of your logs
            https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=YOUR_LICENSE_KEY&suffix=tar.gz
            ```
 
-3. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
+4. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
 
    1.  `rcctl reload httpd`
 
-4. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
+5. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
    * `--exclude-ip='216.144.248.23'`
    * `--unknowns-log=<filename>`
    * `--invalid-requests=<filename>`
