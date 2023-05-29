@@ -36,11 +36,13 @@ ASN_URL="https://download.db-ip.com/free/dbip-asn-lite-2023-05.mmdb.gz"
 
 
 ASN_FILE=$(echo ${ASN_URL} | sed 's:.*/::')
-version=$(pkg_info goaccess | head -n 1)
+VERSION=$(pkg_info goaccess | head -n 1)
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 ASN_BASENAME=$(echo ${ASN_FILE%.*})
 FULL_REPORT_DATE=$(stat -f "%t%Sm" /var/log/goaccess-total-report.html | awk '{print $1,$2;}')
 CURRENT_MONTH_DAY=$(date '+%B %d')
+DATE=`date +%b%e`
+FILENAME=goaccess-report-${DATE}.html
 
 
 ## Check to see if user running script can write to /var
@@ -59,23 +61,22 @@ info()
 {
    echo
    echo "********************\033[38;5;75m Base Mode \033[0;0m************************"
-   echo "${version}"
+   echo "${VERSION}"
    echo "Available mode: \033[38;5;208mfull\033[0;0m"
    echo "Argument full will combine all access.log.*.gz"
-   echo "Arguement full will use all GeoIP Databases"
    echo "*******************************************************\\n"
 }
 
 ## If ASN DB doesn't exist, ask user to download it 
 if [ ! -f "/var/db/GeoIP/ASN.mmdb" ] ; then
     echo
-	echo "\033[38;5;208mWould you like to download ASN Data to /var/db/GeoIP/GeoLite2-Country.mmdb\033[0;0m? (y/N)"
+	echo "\033[38;5;208mWould you like to download ASN Data to /var/db/GeoIP/ASN.mmdb\033[0;0m? (y/N)"
 	read answer
 	case $answer in
 		y|Y|"")
 			echo "*******************************************************"
 			echo "\033[38;5;75mDownloading ASN Data \033[0;0m"
-			echo "Destination: /var/db/GeoIP/GeoLite2-Country.mmdb"
+			echo "Destination: /var/db/GeoIP/ASN.mmdb"
 			echo "*******************************************************"
 			wget --header='Accept-Encoding: gzip' --tries=3 ${ASN_URL} && gunzip ${ASN_FILE}
 			echo "****************\033[38;5;75m Unzipped, Moving File \033[0;0m****************"
@@ -102,15 +103,10 @@ else
 fi
 	
 
-## Get script argument "full" or not
+## Get script argument "full" or not. If not, display usage
 if [ $# -ne 1 ] ; then
    info
    
-   
-## Set report name with current date
-date=`date +%b%e`
-filename=goaccess-report-${date}.html
-
 
 ## Run correct report for just the current /var/www/logs/access.log
 case $ASN_INSTALLED in
@@ -128,7 +124,7 @@ case $ASN_INSTALLED in
 		   --time-format='%T' \
 		   --geoip-database=/var/db/GeoIP/ASN.mmdb \
 		   --geoip-database=/var/db/GeoIP/GeoLite2-Country.mmdb \
-		   --output='/var/log/'${filename}
+		   --output='/var/log/'${FILENAME}
    echo "*******************************************************"
    ;;
    0)
@@ -144,30 +140,29 @@ case $ASN_INSTALLED in
         	--date-format='%d/%b/%Y' \
         	--time-format='%T' \
 			--geoip-database=/var/db/GeoIP/GeoLite2-Country.mmdb \
-        	--output='/var/log/'${filename}
+        	--output='/var/log/'${FILENAME}
 			echo "*******************************************************"
 	;;
 	esac
 
-	if [ -e /var/log/${filename} ]
+	if [ -e /var/log/${FILENAME} ]
    		then
 		    echo
 		    echo "*********************\033[38;5;76m Success \033[0;0m*************************"
-      		echo "Report created at /var/log/${filename}"
+      		echo "Report created at /var/log/${FILENAME}"
       		echo "*******************************************************\\n"
    		else
-      		echo "Error creating /var/log/${filename}"
+      		echo "Error creating /var/log/${FILENAME}"
       		echo "*******************************************************\\n"
 	fi
 
 
-## Run report for all web logs, include the gzipped logs with ASN data
+## Run report for all web logs, include the gzipped logs with ASN data, omit ASN if skipped
 else
  case $ASN_INSTALLED in
    1)
    	  echo
    	  echo "*********************\033[38;5;75m Results \033[0;0m*************************"
-   	  echo
    	  zcat -f /var/www/logs/access.log* \
     	| grep -v 'logfile turned over$' \
     	| awk '$8=$1$8' \
@@ -180,11 +175,11 @@ else
 			--geoip-database=/var/db/GeoIP/ASN.mmdb \
 			--geoip-database=/var/db/GeoIP/GeoLite2-Country.mmdb \
         	--output='/var/log/goaccess-total-report.html'
+			echo "*******************************************************\\n"
 	;;
 	0)	
 	   echo
 	   echo "*********************\033[38;5;75m Results \033[0;0m*************************"
-	   echo
 	   zcat -f /var/www/logs/access.log* \
 		| grep -v 'logfile turned over$' \
 		| awk '$8=$1$8' \
@@ -196,10 +191,13 @@ else
 			--time-format='%T' \
 			--geoip-database=/var/db/GeoIP/GeoLite2-Country.mmdb \
 			--output='/var/log/goaccess-total-report.html'
+			echo "*******************************************************\\n"
 	;;
   esac	
   
-
+ 
+## Check to see if new full report was created 
+## Expected maximum of one full report per day, checks Month-Day to see if newer than last full report
 	if [ -e /var/log/goaccess-total-report.html ] || [ FULL_REPORT_DATE == CURRENT_MONTH_DAY ]
    	then
 	    echo
