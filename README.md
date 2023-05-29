@@ -29,7 +29,9 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
     * Options for DB-IP, MaxMind Github 
 
-* IP Exclusions for [Uptime Robot](https://uptimerobot.com/?rid=d8e3c5122ea836) Web Monitoring 
+* IP Exclusions for Web Monitoring 
+    * [Uptime Robot](https://uptimerobot.com/?rid=d8e3c5122ea836)
+	* UpDown.io
 
 * Simplified shell script for single and combined log reporting output to HTML
 
