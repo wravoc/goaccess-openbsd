@@ -20,7 +20,7 @@ OpenBSD has some quirks dealing with log formats so to make it easier I have mad
 
 * OpenBSD Themed
 
-* Automatic [ASN Database](https://www.arin.net/resources/guide/asn/) Download and Configuration Option
+* Prompted [ASN Database](https://www.arin.net/resources/guide/asn/) Download and Configuration Option
 
     * Options for DB-IP, MaxMind Github 
 
