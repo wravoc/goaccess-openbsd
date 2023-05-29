@@ -14,7 +14,12 @@ It provides **fast** and valuable HTTP statistics for system administrators that
 
 OpenBSD has some quirks dealing with log formats so to make it easier I have made a preconfigured *goaccess.conf* and some simple shell scripts to execute commands that work with the default package version of GoAccess provided by OpenBSD using self same conventions.
 
+# Requirements
+** Log Style Combined**
 
+1. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
+
+    a.  `rcctl reload httpd`
 
 ## Features
 
@@ -80,11 +85,7 @@ After you've made your first reports you can choose to get more out of your logs
            https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=YOUR_LICENSE_KEY&suffix=tar.gz
            ```
 
-4. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
-
-     1.  `rcctl reload httpd`
-
-5. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
+4. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
      * `--exclude-ip='216.144.248.23'`
      * `--unknowns-log=<filename>`
      * `--invalid-requests=<filename>`
