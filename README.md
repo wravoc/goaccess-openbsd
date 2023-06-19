@@ -69,7 +69,7 @@ After you've made your first reports you can choose to get more out of your logs
 
 1. Add your ASN provider in the `CUSTOMIZE` section *(does not permit authenticated logins)*
 
-2. Once you have download the ASN database via the script edit your `/etc/goaccess/goaccess.conf`
+2. Once you have downloaded the ASN database via the script edit your `/etc/goaccess/goaccess.conf`
 
      1.  Line 839 `geoip-database /var/db/GeoIP/ASN.mmdb`
 
