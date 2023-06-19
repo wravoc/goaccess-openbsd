@@ -15,7 +15,7 @@ It provides **fast** and valuable HTTP statistics for system administrators that
 OpenBSD has some quirks dealing with log formats so to make it easier I have made a preconfigured *goaccess.conf* and some simple shell scripts to execute commands that work with the default package version of GoAccess provided by OpenBSD using self same conventions.
 
 # Requirements
-** Log Style Combined**
+**Log Style Combined**
 
 1. Inside the `server` section of your `httpd.conf` add the directive `log style combined`
 
