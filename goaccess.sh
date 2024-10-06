@@ -24,7 +24,7 @@
 #######################################################################
 # CUSTOMIZE -----------------------------------------------------------
 # ---------------------------------------------------------------------
-ASN_URL="https://download.db-ip.com/free/dbip-asn-lite-2023-05.mmdb.gz"
+ASN_URL="https://download.db-ip.com/free/dbip-country-lite-2024-10.mmdb.gz"
 #
 # MaxMind GitHub 2021
 # "https://git.io/GeoLite2-ASN.mmdb"
