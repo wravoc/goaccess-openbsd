@@ -81,11 +81,8 @@ After you've made your first reports you can choose to get more out of your logs
 
        1.  Insert into `goasscess.conf` line 840 `geoip-database /var/db/GeoIP/GeoLite2-City.mmdb`
 
-     3.  **MaxMind ASN** Autoupdate requires this `ASN_URL` with your **license key added** to the URL
-
-         1.  ```
-           https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=YOUR_LICENSE_KEY&suffix=tar.gz
-           ```
+     3.  **MaxMind ASN** Autoupdate requires the below `ASN_URL` with your **license key added** to the URL
+     1.  https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=`YOUR_LICENSE_KEY`&suffix=tar.gz
 
 4. Change shell script as needed. Add any [options](https://goaccess.io/man#options) for the shell script, some popular ones:
      * `--exclude-ip='216.144.248.23'`
